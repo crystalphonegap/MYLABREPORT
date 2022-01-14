@@ -1,0 +1,5 @@
+https://localhost:44399/CR.aspx?ID=65,66&Report=GetPatientTestReport
+
+https://localhost:44399/CrystalReport.aspx?ID=clkUIx19c+mNMSuh2IhMjg==&Report=xqiQ7G+VMqX1yL+DeC2N5ehZLJAAbslVefoT0WPfGxI=
+
+)
