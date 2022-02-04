@@ -12,8 +12,8 @@ namespace MYLAB_Report
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 if (!IsPostBack)
                 {
                     string Id = Request.QueryString["ID"].ToString();
@@ -29,22 +29,22 @@ namespace MYLAB_Report
                     
                 }
 
-            }
-            catch (Exception)
-            {
+            //}
+            //catch (Exception)
+            //{
 
-            }
+            //}
         }
 
         private void GetPatientTestReport(string Id)
         {
             string conString = ConfigurationManager.ConnectionStrings["MYLABWEBConnectionString"].ConnectionString;
             SqlConnection sqlcon = new SqlConnection(conString);
-            try
-            {
+            //try
+            //{
 
-                try
-                {
+            //    try
+            //    {
 
                     SqlCommand sqlcmd = new SqlCommand("PRC_MS_GETPATIENTBILL", sqlcon);
                     sqlcmd.CommandType = CommandType.StoredProcedure;
@@ -56,16 +56,16 @@ namespace MYLAB_Report
                     da.Fill(dt);
 
                     ReportDocument CrystalReport = new ReportDocument();
-                    try
-                    {
+                    //try
+                    //{
                         CrystalReport.Load(Server.MapPath("~/Reports/PatientBillReport.rpt"));
-                    }
-                    catch(Exception e)
-                    {
-                        Label.Enabled = true;
-                        Label.Text = "Crystal Report File Does Not Exist ";
-                        return;
-                    }
+                    //}
+                    //catch(Exception e)
+                    //{
+                    //    Label.Enabled = true;
+                    //    Label.Text = "Crystal Report File Does Not Exist ";
+                    //    return;
+                    //}
                     CrystalReport.SetDataSource(dt);
                     CrvPatientBill.Enabled = true;
                     CrvPatientBill.ReportSource = CrystalReport;
@@ -78,23 +78,23 @@ namespace MYLAB_Report
                     Response.Write("window.open("+ rptname+", '_newtab');");
                     Response.Write("</script>");
                     Response.End();
-                }
-                catch (Exception)
-                {
+                //}
+                //catch (Exception ex)
+                //{ 
 
-                }
+                //}
 
-            }
-            catch (Exception ex)
-            {
-                Label.Enabled = true;
-                Label.Text = "Invalid URL OR " + ex.Message;
-                throw ex;
-            }
-            finally
-            {
-                sqlcon.Close();
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Label.Enabled = true;
+            //    Label.Text = "Invalid URL OR " + ex.Message;
+            //    throw ex;
+            //}
+            //finally
+            //{
+            //    sqlcon.Close();
+            //}
         }
 
         private void GetPatientTestReportBarcode(string Id)
